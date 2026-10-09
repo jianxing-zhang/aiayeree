@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: question-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/ai_teaching_db?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+
+server:
+  port: 8082
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+
+# AI agent（Python langgraph 服务）对接配置
+ai:
+  agent:
+    base-url: http://127.0.0.1:2024
+    assistant-id: chief_agent
+    model: qwen-vl-plus
+    connect-timeout-ms: 30000
+    read-timeout-ms: 180000

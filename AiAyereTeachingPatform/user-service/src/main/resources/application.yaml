@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: user-service
+  # 本地演示无需 Nacos 配置中心；如需接入 Nacos 取消下面注释
+  # config:
+  #   import: optional:nacos:localhost:8848
+  cloud:
+    nacos:
+      config:
+        import-check:
+          enabled: false
+      # 本地无 Nacos 时关闭服务注册，避免启动失败；有 Nacos 可改为 true
+      discovery:
+        enabled: false
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      database: 0
+  datasource:
+    url: jdbc:mysql://localhost:3306/ai_teaching_db?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+server:
+  port: 8081
+
+aliyun:
+  sms:
+    access-key-id: ${ALIYUN_ACCESS_KEY_ID:}
+    access-key-secret: ${ALIYUN_ACCESS_KEY_SECRET:}
+    endpoint: dypnsapi.aliyuncs.com
+    sign-name: 恒创联众
+    template-code: "100001"
+
